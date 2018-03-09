@@ -4,7 +4,7 @@ using Unity.Mvc5;
 using ServiceLayer.Interfaces;
 using RepositoryLayer.Interfaces;
 using RepositoryLayer.Repositories;
-using ServiceLayer.Services;
+//using ServiceLayer.Services;
 
 namespace TestUI
 {
@@ -18,8 +18,8 @@ namespace TestUI
             // it is NOT necessary to register your controllers
 
             // e.g. container.RegisterType<ITestService, TestService>();
-            container.RegisterType<IUserService, UserService>();
-            container.RegisterType<IUserRepo,UserRepository>();
+            //container.RegisterType<IUserService, UserService>();
+            //container.RegisterType<IUserRepo,UserRepository>();
             container.RegisterType<IAssociateRepo, AssociateRepository>();
             container.RegisterType<IAssociateService, AssociateService>();
 
