@@ -342,6 +342,6 @@ namespace DataAcessLayer.Models
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<ssp_getassociatedfirmsorclients_Result>("ssp_getassociatedfirmsorclients", individualidParameter);
         }
 
-        public System.Data.Entity.DbSet<DataAcessLayer.ViewModels.UserViewModel> UserViewModels { get; set; }
+       // public System.Data.Entity.DbSet<DataAcessLayer.ViewModels.UserViewModel> UserViewModels { get; set; }
     }
 }
