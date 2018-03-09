@@ -1,0 +1,581 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="DMS2ModelStoreContainer" CdmEntityContainer="DMS2DataContext">
+    <EntitySetMapping Name="ClientAssociates">
+      <EntityTypeMapping TypeName="DMS2Model.ClientAssociate">
+        <MappingFragment StoreEntitySet="ClientAssociates">
+          <ScalarProperty Name="ClientAssociateId" ColumnName="ClientAssociateId" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateInvited" ColumnName="DateInvited" />
+          <ScalarProperty Name="DateAccepted" ColumnName="DateAccepted" />
+          <ScalarProperty Name="ClientAssociateRootFolderId" ColumnName="ClientAssociateRootFolderId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Clients">
+      <EntityTypeMapping TypeName="DMS2Model.Client">
+        <MappingFragment StoreEntitySet="Clients">
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="FirmId" ColumnName="FirmId" />
+          <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientPrefix" ColumnName="ClientPrefix" />
+          <ScalarProperty Name="ClientFirstName" ColumnName="ClientFirstName" />
+          <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+          <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+          <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+          <ScalarProperty Name="ClientSuffix" ColumnName="ClientSuffix" />
+          <ScalarProperty Name="ClientAddress1" ColumnName="ClientAddress1" />
+          <ScalarProperty Name="ClientAddress2" ColumnName="ClientAddress2" />
+          <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+          <ScalarProperty Name="ClientState" ColumnName="ClientState" />
+          <ScalarProperty Name="ClientZip" ColumnName="ClientZip" />
+          <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+          <ScalarProperty Name="ClientRootFolderId" ColumnName="ClientRootFolderId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="ClientUserName" ColumnName="ClientUserName" />
+          <ScalarProperty Name="ClientPassword" ColumnName="ClientPassword" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Documents">
+      <EntityTypeMapping TypeName="DMS2Model.Document">
+        <MappingFragment StoreEntitySet="Documents">
+          <ScalarProperty Name="DocId" ColumnName="DocId" />
+          <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+          <ScalarProperty Name="DocName" ColumnName="DocName" />
+          <ScalarProperty Name="DocSize" ColumnName="DocSize" />
+          <ScalarProperty Name="DocType" ColumnName="DocType" />
+          <ScalarProperty Name="DocPath" ColumnName="DocPath" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Firms">
+      <EntityTypeMapping TypeName="DMS2Model.Firm">
+        <MappingFragment StoreEntitySet="Firms">
+          <ScalarProperty Name="FirmId" ColumnName="FirmId" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmLogo" ColumnName="FirmLogo" />
+          <ScalarProperty Name="FirmAddress1" ColumnName="FirmAddress1" />
+          <ScalarProperty Name="FirmAddress2" ColumnName="FirmAddress2" />
+          <ScalarProperty Name="FirmCity" ColumnName="FirmCity" />
+          <ScalarProperty Name="FirmState" ColumnName="FirmState" />
+          <ScalarProperty Name="FirmZip" ColumnName="FirmZip" />
+          <ScalarProperty Name="FirmPhone" ColumnName="FirmPhone" />
+          <ScalarProperty Name="FirmEmail" ColumnName="FirmEmail" />
+          <ScalarProperty Name="FirmWebsite" ColumnName="FirmWebsite" />
+          <ScalarProperty Name="FirmRootFolderId" ColumnName="FirmRootFolderId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="FolderPermissions">
+      <EntityTypeMapping TypeName="DMS2Model.FolderPermission">
+        <MappingFragment StoreEntitySet="FolderPermissions">
+          <ScalarProperty Name="FolderPermissionId" ColumnName="FolderPermissionId" />
+          <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="CanCreate" ColumnName="CanCreate" />
+          <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+          <ScalarProperty Name="CanUpload" ColumnName="CanUpload" />
+          <ScalarProperty Name="CanDownload" ColumnName="CanDownload" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Role_RoleId" ColumnName="Role_RoleId" />
+          <ScalarProperty Name="User_UserId" ColumnName="User_UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Folders">
+      <EntityTypeMapping TypeName="DMS2Model.Folder">
+        <MappingFragment StoreEntitySet="Folders">
+          <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+          <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="ParentFolderId" ColumnName="ParentFolderId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="IndividualRoles">
+      <EntityTypeMapping TypeName="DMS2Model.IndividualRole">
+        <MappingFragment StoreEntitySet="IndividualRoles">
+          <ScalarProperty Name="IndividualRoleid" ColumnName="IndividualRoleid" />
+          <ScalarProperty Name="Individualid" ColumnName="Individualid" />
+          <ScalarProperty Name="Firmid" ColumnName="Firmid" />
+          <ScalarProperty Name="Clientid" ColumnName="Clientid" />
+          <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Individuals">
+      <EntityTypeMapping TypeName="DMS2Model.Individual">
+        <MappingFragment StoreEntitySet="Individuals">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogInfoes">
+      <EntityTypeMapping TypeName="DMS2Model.LogInfo">
+        <MappingFragment StoreEntitySet="LogInfoes">
+          <ScalarProperty Name="ModuleName" ColumnName="ModuleName" />
+          <ScalarProperty Name="FieldName" ColumnName="FieldName" />
+          <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogProperties">
+      <EntityTypeMapping TypeName="DMS2Model.LogProperty">
+        <MappingFragment StoreEntitySet="LogProperties">
+          <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="LogValues" ColumnName="LogValues" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogPropertyChanges">
+      <EntityTypeMapping TypeName="DMS2Model.LogPropertyChanx">
+        <MappingFragment StoreEntitySet="LogPropertyChanges">
+          <ScalarProperty Name="LogPropertyChangeId" ColumnName="LogPropertyChangeId" />
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+          <ScalarProperty Name="PropertyKey" ColumnName="PropertyKey" />
+          <ScalarProperty Name="PreviousValue" ColumnName="PreviousValue" />
+          <ScalarProperty Name="NewValue" ColumnName="NewValue" />
+          <ScalarProperty Name="EncryptionKey" ColumnName="EncryptionKey" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logs">
+      <EntityTypeMapping TypeName="DMS2Model.Log">
+        <MappingFragment StoreEntitySet="Logs">
+          <ScalarProperty Name="LogId" ColumnName="LogId" />
+          <ScalarProperty Name="ObjectId" ColumnName="ObjectId" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="TypeKey" ColumnName="TypeKey" />
+          <ScalarProperty Name="OperationKey" ColumnName="OperationKey" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Message" ColumnName="Message" />
+          <ScalarProperty Name="Created" ColumnName="Created" />
+          <ScalarProperty Name="Processed" ColumnName="Processed" />
+          <ScalarProperty Name="ProcessedDate" ColumnName="ProcessedDate" />
+          <ScalarProperty Name="SendEmail" ColumnName="SendEmail" />
+          <ScalarProperty Name="WriteAsFile" ColumnName="WriteAsFile" />
+          <ScalarProperty Name="Representative" ColumnName="Representative" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LogTypes">
+      <EntityTypeMapping TypeName="DMS2Model.LogType">
+        <MappingFragment StoreEntitySet="LogTypes">
+          <ScalarProperty Name="Key" ColumnName="Key" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="IdName" ColumnName="IdName" />
+          <ScalarProperty Name="ClientIdName" ColumnName="ClientIdName" />
+          <ScalarProperty Name="ParentIdName" ColumnName="ParentIdName" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Roles">
+      <EntityTypeMapping TypeName="DMS2Model.Role">
+        <MappingFragment StoreEntitySet="Roles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="DMS2Model.sysdiagram">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="User_Test">
+      <EntityTypeMapping TypeName="DMS2Model.User_Test">
+        <MappingFragment StoreEntitySet="User_Test">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Title" ColumnName="Title" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Profession" ColumnName="Profession" />
+          <ScalarProperty Name="UserCode" ColumnName="UserCode" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="UserRoleId" ColumnName="UserRoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="UserRoles">
+      <EntityTypeMapping TypeName="DMS2Model.UserRole">
+        <MappingFragment StoreEntitySet="UserRoles">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetAssociatesFirmsClients" FunctionName="DMS2Model.Store.GetAssociatesFirmsClients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.GetAssociatesFirmsClients_Result">
+          <ScalarProperty Name="FirmId" ColumnName="FirmId" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmLogo" ColumnName="FirmLogo" />
+          <ScalarProperty Name="FirmAddress1" ColumnName="FirmAddress1" />
+          <ScalarProperty Name="FirmAddress2" ColumnName="FirmAddress2" />
+          <ScalarProperty Name="FirmCity" ColumnName="FirmCity" />
+          <ScalarProperty Name="FirmState" ColumnName="FirmState" />
+          <ScalarProperty Name="FirmZip" ColumnName="FirmZip" />
+          <ScalarProperty Name="FirmPhone" ColumnName="FirmPhone" />
+          <ScalarProperty Name="FirmEmail" ColumnName="FirmEmail" />
+          <ScalarProperty Name="FirmWebsite" ColumnName="FirmWebsite" />
+          <ScalarProperty Name="FirmRootFolderId" ColumnName="FirmRootFolderId" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ClientId" ColumnName="ClientId" />
+          <ScalarProperty Name="FirmId1" ColumnName="FirmId1" />
+          <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+          <ScalarProperty Name="ClientPrefix" ColumnName="ClientPrefix" />
+          <ScalarProperty Name="ClientFirstName" ColumnName="ClientFirstName" />
+          <ScalarProperty Name="ClientMiddleName" ColumnName="ClientMiddleName" />
+          <ScalarProperty Name="ClientLastName" ColumnName="ClientLastName" />
+          <ScalarProperty Name="ClientEmail" ColumnName="ClientEmail" />
+          <ScalarProperty Name="ClientSuffix" ColumnName="ClientSuffix" />
+          <ScalarProperty Name="ClientAddress1" ColumnName="ClientAddress1" />
+          <ScalarProperty Name="ClientAddress2" ColumnName="ClientAddress2" />
+          <ScalarProperty Name="ClientCity" ColumnName="ClientCity" />
+          <ScalarProperty Name="ClientState" ColumnName="ClientState" />
+          <ScalarProperty Name="ClientZip" ColumnName="ClientZip" />
+          <ScalarProperty Name="ClientPhone" ColumnName="ClientPhone" />
+          <ScalarProperty Name="ClientRootFolderId" ColumnName="ClientRootFolderId" />
+          <ScalarProperty Name="CreatedBy1" ColumnName="CreatedBy1" />
+          <ScalarProperty Name="CreatedDate1" ColumnName="CreatedDate1" />
+          <ScalarProperty Name="ModifiedBy1" ColumnName="ModifiedBy1" />
+          <ScalarProperty Name="ModifiedDate1" ColumnName="ModifiedDate1" />
+          <ScalarProperty Name="IsActive1" ColumnName="IsActive1" />
+          <ScalarProperty Name="IsDeleted1" ColumnName="IsDeleted1" />
+          <ScalarProperty Name="ClientUserName" ColumnName="ClientUserName" />
+          <ScalarProperty Name="ClientPassword" ColumnName="ClientPassword" />
+          <ScalarProperty Name="ClientAssociateId" ColumnName="ClientAssociateId" />
+          <ScalarProperty Name="ClientId1" ColumnName="ClientId1" />
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="Birthdate" ColumnName="Birthdate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DateInvited" ColumnName="DateInvited" />
+          <ScalarProperty Name="DateAccepted" ColumnName="DateAccepted" />
+          <ScalarProperty Name="ClientAssociateRootFolderId" ColumnName="ClientAssociateRootFolderId" />
+          <ScalarProperty Name="CreatedBy2" ColumnName="CreatedBy2" />
+          <ScalarProperty Name="CreatedDate2" ColumnName="CreatedDate2" />
+          <ScalarProperty Name="ModifiedBy2" ColumnName="ModifiedBy2" />
+          <ScalarProperty Name="ModifiedDate2" ColumnName="ModifiedDate2" />
+          <ScalarProperty Name="IndividualRoleid" ColumnName="IndividualRoleid" />
+          <ScalarProperty Name="Individualid1" ColumnName="Individualid1" />
+          <ScalarProperty Name="Firmid2" ColumnName="Firmid2" />
+          <ScalarProperty Name="Clientid2" ColumnName="Clientid2" />
+          <ScalarProperty Name="Roleid" ColumnName="Roleid" />
+          <ScalarProperty Name="IsActive2" ColumnName="IsActive2" />
+          <ScalarProperty Name="CreatedBy3" ColumnName="CreatedBy3" />
+          <ScalarProperty Name="CreatedDate3" ColumnName="CreatedDate3" />
+          <ScalarProperty Name="ModifiedBy3" ColumnName="ModifiedBy3" />
+          <ScalarProperty Name="ModifiedDate3" ColumnName="ModifiedDate3" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_CreateFolder" FunctionName="DMS2Model.Store.sp_CreateFolder" />
+    <FunctionImportMapping FunctionImportName="sp_deleteFirm" FunctionName="DMS2Model.Store.sp_deleteFirm" />
+    <FunctionImportMapping FunctionImportName="sp_deleteFirms" FunctionName="DMS2Model.Store.sp_deleteFirms" />
+    <FunctionImportMapping FunctionImportName="sp_getAssociatedIndividuals" FunctionName="DMS2Model.Store.sp_getAssociatedIndividuals">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_getAssociatedIndividuals_Result">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetClients_Search" FunctionName="DMS2Model.Store.sp_GetClients_Search" />
+    <FunctionImportMapping FunctionImportName="sp_GetClients_Search_Test" FunctionName="DMS2Model.Store.sp_GetClients_Search_Test" />
+    <FunctionImportMapping FunctionImportName="sp_GetClients_Search_TestNew" FunctionName="DMS2Model.Store.sp_GetClients_Search_TestNew" />
+    <FunctionImportMapping FunctionImportName="sp_getclientsbyIndividualId" FunctionName="DMS2Model.Store.sp_getclientsbyIndividualId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_getclientsbyIndividualId_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetDataByFolderId" FunctionName="DMS2Model.Store.SP_GetDataByFolderId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.SP_GetDataByFolderId_Result">
+          <ScalarProperty Name="FOLDERID" ColumnName="FOLDERID" />
+          <ScalarProperty Name="FOLDERNAME" ColumnName="FOLDERNAME" />
+          <ScalarProperty Name="FOLDERPATH" ColumnName="FOLDERPATH" />
+          <ScalarProperty Name="CANCREATE" ColumnName="CANCREATE" />
+          <ScalarProperty Name="CANDELETE" ColumnName="CANDELETE" />
+          <ScalarProperty Name="CANUPLOAD" ColumnName="CANUPLOAD" />
+          <ScalarProperty Name="CANDOWNLOAD" ColumnName="CANDOWNLOAD" />
+          <ScalarProperty Name="CREATEDBY" ColumnName="CREATEDBY" />
+          <ScalarProperty Name="CREATEDDATE" ColumnName="CREATEDDATE" />
+          <ScalarProperty Name="FOLDERPERMISSIONID" ColumnName="FOLDERPERMISSIONID" />
+          <ScalarProperty Name="OWNERID" ColumnName="OWNERID" />
+          <ScalarProperty Name="ROLEID" ColumnName="ROLEID" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetFoldersByParentFolderId" FunctionName="DMS2Model.Store.sp_GetFoldersByParentFolderId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_GetFoldersByParentFolderId_Result">
+          <ScalarProperty Name="FolderPermissionId" ColumnName="FolderPermissionId" />
+          <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="CanCreate" ColumnName="CanCreate" />
+          <ScalarProperty Name="CanDelete" ColumnName="CanDelete" />
+          <ScalarProperty Name="CanUpload" ColumnName="CanUpload" />
+          <ScalarProperty Name="CanDownload" ColumnName="CanDownload" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="Role_RoleId" ColumnName="Role_RoleId" />
+          <ScalarProperty Name="User_UserId" ColumnName="User_UserId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetFoldersWithPermissions" FunctionName="DMS2Model.Store.sp_GetFoldersWithPermissions">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_GetFoldersWithPermissions_Result">
+          <ScalarProperty Name="FolderId" ColumnName="FolderId" />
+          <ScalarProperty Name="FolderName" ColumnName="FolderName" />
+          <ScalarProperty Name="FolderPath" ColumnName="FolderPath" />
+          <ScalarProperty Name="ParentFolderId" ColumnName="ParentFolderId" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetIndividualByclientId" FunctionName="DMS2Model.Store.SP_GetIndividualByclientId">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.SP_GetIndividualByclientId_Result">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SP_GetIndividualEmailDetails" FunctionName="DMS2Model.Store.SP_GetIndividualEmailDetails" />
+    <FunctionImportMapping FunctionImportName="SP_GetIndividualForInvitations" FunctionName="DMS2Model.Store.SP_GetIndividualForInvitations">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.SP_GetIndividualForInvitations_Result">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetInviteList" FunctionName="DMS2Model.Store.sp_GetInviteList">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_GetInviteList_Result">
+          <ScalarProperty Name="FromClient" ColumnName="FromClient" />
+          <ScalarProperty Name="ToClient" ColumnName="ToClient" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_GetInviteList_test" FunctionName="DMS2Model.Store.sp_GetInviteList_test">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_GetInviteList_test_Result">
+          <ScalarProperty Name="FromClient" ColumnName="FromClient" />
+          <ScalarProperty Name="ToClient" ColumnName="ToClient" />
+          <ScalarProperty Name="Status" ColumnName="Status" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getUserByEmail" FunctionName="DMS2Model.Store.sp_getUserByEmail">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_getUserByEmail_Result">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_getUsersInRoleByFirmOrClient" FunctionName="DMS2Model.Store.sp_getUsersInRoleByFirmOrClient">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_getUsersInRoleByFirmOrClient_Result">
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="ClientName" ColumnName="ClientName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="sp_userlogin" FunctionName="DMS2Model.Store.sp_userlogin">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.sp_userlogin_Result">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="Suffix" ColumnName="Suffix" />
+          <ScalarProperty Name="SSN" ColumnName="SSN" />
+          <ScalarProperty Name="BirthDate" ColumnName="BirthDate" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="EmailAddress" ColumnName="EmailAddress" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="IsBusiness" ColumnName="IsBusiness" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ssp_getassociatedfirmsorclients" FunctionName="DMS2Model.Store.ssp_getassociatedfirmsorclients">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="DMS2Model.ssp_getassociatedfirmsorclients_Result">
+          <ScalarProperty Name="IndividualId" ColumnName="IndividualId" />
+          <ScalarProperty Name="ssn" ColumnName="ssn" />
+          <ScalarProperty Name="roleid" ColumnName="roleid" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="FirmName" ColumnName="FirmName" />
+          <ScalarProperty Name="FirmWebsite" ColumnName="FirmWebsite" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

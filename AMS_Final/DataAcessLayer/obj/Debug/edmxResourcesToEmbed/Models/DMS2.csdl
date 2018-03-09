@@ -1,0 +1,791 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DMS2Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ClientAssociate">
+    <Key>
+      <PropertyRef Name="ClientAssociateId" />
+    </Key>
+    <Property Name="ClientAssociateId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ClientId" Type="Int64" Nullable="false" />
+    <Property Name="IndividualId" Type="Int64" Nullable="false" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SSN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="Birthdate" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateInvited" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="DateAccepted" Type="DateTime" Precision="3" />
+    <Property Name="ClientAssociateRootFolderId" Type="Int64" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Client" Relationship="Self.FK_dbo_ClientAssociates_dbo_Clients_ClientId" FromRole="ClientAssociates" ToRole="Clients" />
+    <NavigationProperty Name="Individual" Relationship="Self.FK_dbo_ClientAssociates_dbo_Individuals_IndividualId" FromRole="ClientAssociates" ToRole="Individuals" />
+  </EntityType>
+  <EntityType Name="Client">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirmId" Type="Int64" Nullable="false" />
+    <Property Name="IsBusiness" Type="Boolean" />
+    <Property Name="ClientName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClientPrefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientFirstName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClientMiddleName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClientLastName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ClientEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientSuffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientAddress1" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ClientAddress2" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="ClientCity" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="ClientState" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ClientZip" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="ClientPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ClientRootFolderId" Type="Int64" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="ClientUserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ClientPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClientAssociates" Relationship="Self.FK_dbo_ClientAssociates_dbo_Clients_ClientId" FromRole="Clients" ToRole="ClientAssociates" />
+    <NavigationProperty Name="Firm" Relationship="Self.FK_dbo_Clients_dbo_Firms_FirmId" FromRole="Clients" ToRole="Firms" />
+  </EntityType>
+  <EntityType Name="Document">
+    <Key>
+      <PropertyRef Name="DocId" />
+    </Key>
+    <Property Name="DocId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FolderId" Type="Int64" />
+    <Property Name="DocName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocSize" Type="Int32" />
+    <Property Name="DocType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DocPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Folder" Relationship="Self.FK_dbo_Documents_dbo_Folders_FolderId" FromRole="Documents" ToRole="Folders" />
+  </EntityType>
+  <EntityType Name="Firm">
+    <Key>
+      <PropertyRef Name="FirmId" />
+    </Key>
+    <Property Name="FirmId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirmName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirmLogo" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirmAddress1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirmAddress2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FirmCity" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirmState" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirmZip" Type="String" MaxLength="6" FixedLength="false" Unicode="false" />
+    <Property Name="FirmPhone" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+    <Property Name="FirmEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="FirmWebsite" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="FirmRootFolderId" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Clients" Relationship="Self.FK_dbo_Clients_dbo_Firms_FirmId" FromRole="Firms" ToRole="Clients" />
+    <NavigationProperty Name="IndividualRoles" Relationship="Self.FK_IndividualRoles_Firms" FromRole="Firms" ToRole="IndividualRoles" />
+  </EntityType>
+  <EntityType Name="FolderPermission">
+    <Key>
+      <PropertyRef Name="FolderPermissionId" />
+    </Key>
+    <Property Name="FolderPermissionId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FolderId" Type="Int64" />
+    <Property Name="OwnerId" Type="Int64" />
+    <Property Name="IndividualId" Type="Int64" />
+    <Property Name="RoleId" Type="Int32" Nullable="false" />
+    <Property Name="CanCreate" Type="Boolean" />
+    <Property Name="CanDelete" Type="Boolean" />
+    <Property Name="CanUpload" Type="Boolean" />
+    <Property Name="CanDownload" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="Role_RoleId" Type="Int32" />
+    <Property Name="User_UserId" Type="Int64" />
+    <NavigationProperty Name="Folder" Relationship="Self.FK_dbo_FolderPermissions_dbo_Folders_FolderId" FromRole="FolderPermissions" ToRole="Folders" />
+    <NavigationProperty Name="Individual" Relationship="Self.FK_dbo_FolderPermissions_dbo_Individuals_IndividualId" FromRole="FolderPermissions" ToRole="Individuals" />
+  </EntityType>
+  <EntityType Name="Folder">
+    <Key>
+      <PropertyRef Name="FolderId" />
+    </Key>
+    <Property Name="FolderId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FolderName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="FolderPath" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentFolderId" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Documents" Relationship="Self.FK_dbo_Documents_dbo_Folders_FolderId" FromRole="Folders" ToRole="Documents" />
+    <NavigationProperty Name="FolderPermissions" Relationship="Self.FK_dbo_FolderPermissions_dbo_Folders_FolderId" FromRole="Folders" ToRole="FolderPermissions" />
+  </EntityType>
+  <EntityType Name="IndividualRole">
+    <Key>
+      <PropertyRef Name="IndividualRoleid" />
+    </Key>
+    <Property Name="IndividualRoleid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Individualid" Type="Int64" />
+    <Property Name="Firmid" Type="Int64" />
+    <Property Name="Clientid" Type="Int64" />
+    <Property Name="Roleid" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Firm" Relationship="Self.FK_IndividualRoles_Firms" FromRole="IndividualRoles" ToRole="Firms" />
+    <NavigationProperty Name="Individual" Relationship="Self.FK_IndividualRoles_Individuals" FromRole="IndividualRoles" ToRole="Individuals" />
+  </EntityType>
+  <EntityType Name="Individual">
+    <Key>
+      <PropertyRef Name="IndividualId" />
+    </Key>
+    <Property Name="IndividualId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Prefix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="MiddleName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Suffix" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SSN" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="BirthDate" Type="DateTime" Precision="3" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EmailAddress" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsBusiness" Type="Boolean" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ClientAssociates" Relationship="Self.FK_dbo_ClientAssociates_dbo_Individuals_IndividualId" FromRole="Individuals" ToRole="ClientAssociates" />
+    <NavigationProperty Name="FolderPermissions" Relationship="Self.FK_dbo_FolderPermissions_dbo_Individuals_IndividualId" FromRole="Individuals" ToRole="FolderPermissions" />
+    <NavigationProperty Name="IndividualRoles" Relationship="Self.FK_IndividualRoles_Individuals" FromRole="Individuals" ToRole="IndividualRoles" />
+  </EntityType>
+  <EntityType Name="LogInfo">
+    <Key>
+      <PropertyRef Name="ModuleName" />
+    </Key>
+    <Property Name="ModuleName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="FieldName" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="PreviousValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ModifiedBy" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LogProperty">
+    <Key>
+      <PropertyRef Name="TypeKey" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="TypeKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Key" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="LogValues" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="LogPropertyChanx">
+    <Key>
+      <PropertyRef Name="LogPropertyChangeId" />
+    </Key>
+    <Property Name="LogPropertyChangeId" Type="Guid" Nullable="false" />
+    <Property Name="LogId" Type="Guid" Nullable="false" />
+    <Property Name="PropertyKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PreviousValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="NewValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="EncryptionKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Log" Relationship="Self.FK_dbo_LogPropertyChanges_dbo_Logs_LogId" FromRole="LogPropertyChanges" ToRole="Logs" />
+  </EntityType>
+  <EntityType Name="Log">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="Guid" Nullable="false" />
+    <Property Name="ObjectId" Type="Int32" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="TypeKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OperationKey" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int32" />
+    <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Created" Type="DateTime" Precision="3" />
+    <Property Name="Processed" Type="Boolean" Nullable="false" />
+    <Property Name="ProcessedDate" Type="DateTime" Precision="3" />
+    <Property Name="SendEmail" Type="Boolean" Nullable="false" />
+    <Property Name="WriteAsFile" Type="Boolean" Nullable="false" />
+    <Property Name="Representative" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="LogPropertyChanges" Relationship="Self.FK_dbo_LogPropertyChanges_dbo_Logs_LogId" FromRole="Logs" ToRole="LogPropertyChanges" />
+  </EntityType>
+  <EntityType Name="LogType">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IdName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ClientIdName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ParentIdName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Role">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="sysdiagram">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="principal_id" Type="Int32" Nullable="false" />
+    <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="version" Type="Int32" />
+    <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+  </EntityType>
+  <EntityType Name="User_Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Profession" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="UserCode" Type="String" MaxLength="5" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="UserRoleId" Type="Int32" />
+    <NavigationProperty Name="UserRole" Relationship="Self.FK_User_Test_UserRoles" FromRole="User_Test" ToRole="UserRoles" />
+  </EntityType>
+  <EntityType Name="UserRole">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RoleName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Boolean" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User_Test" Relationship="Self.FK_User_Test_UserRoles" FromRole="UserRoles" ToRole="User_Test" />
+  </EntityType>
+  <Association Name="FK_dbo_ClientAssociates_dbo_Clients_ClientId">
+    <End Role="Clients" Type="Self.Client" Multiplicity="1" />
+    <End Role="ClientAssociates" Type="Self.ClientAssociate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="ClientAssociates">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ClientAssociates_dbo_Individuals_IndividualId">
+    <End Role="Individuals" Type="Self.Individual" Multiplicity="1" />
+    <End Role="ClientAssociates" Type="Self.ClientAssociate" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="ClientAssociates">
+        <PropertyRef Name="IndividualId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Clients_dbo_Firms_FirmId">
+    <End Role="Firms" Type="Self.Firm" Multiplicity="1" />
+    <End Role="Clients" Type="Self.Client" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firms">
+        <PropertyRef Name="FirmId" />
+      </Principal>
+      <Dependent Role="Clients">
+        <PropertyRef Name="FirmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Documents_dbo_Folders_FolderId">
+    <End Role="Folders" Type="Self.Folder" Multiplicity="0..1" />
+    <End Role="Documents" Type="Self.Document" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="FolderId" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="FolderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualRoles_Firms">
+    <End Role="Firms" Type="Self.Firm" Multiplicity="0..1" />
+    <End Role="IndividualRoles" Type="Self.IndividualRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firms">
+        <PropertyRef Name="FirmId" />
+      </Principal>
+      <Dependent Role="IndividualRoles">
+        <PropertyRef Name="Firmid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_FolderPermissions_dbo_Folders_FolderId">
+    <End Role="Folders" Type="Self.Folder" Multiplicity="0..1" />
+    <End Role="FolderPermissions" Type="Self.FolderPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="FolderId" />
+      </Principal>
+      <Dependent Role="FolderPermissions">
+        <PropertyRef Name="FolderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_FolderPermissions_dbo_Individuals_IndividualId">
+    <End Role="Individuals" Type="Self.Individual" Multiplicity="0..1" />
+    <End Role="FolderPermissions" Type="Self.FolderPermission" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="FolderPermissions">
+        <PropertyRef Name="IndividualId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualRoles_Individuals">
+    <End Role="Individuals" Type="Self.Individual" Multiplicity="0..1" />
+    <End Role="IndividualRoles" Type="Self.IndividualRole" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="IndividualRoles">
+        <PropertyRef Name="Individualid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LogPropertyChanges_dbo_Logs_LogId">
+    <End Role="Logs" Type="Self.Log" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LogPropertyChanges" Type="Self.LogPropertyChanx" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logs">
+        <PropertyRef Name="LogId" />
+      </Principal>
+      <Dependent Role="LogPropertyChanges">
+        <PropertyRef Name="LogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Test_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRole" Multiplicity="0..1" />
+    <End Role="User_Test" Type="Self.User_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User_Test">
+        <PropertyRef Name="UserRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="DMS2DataContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ClientAssociates" EntityType="Self.ClientAssociate" />
+    <EntitySet Name="Clients" EntityType="Self.Client" />
+    <EntitySet Name="Documents" EntityType="Self.Document" />
+    <EntitySet Name="Firms" EntityType="Self.Firm" />
+    <EntitySet Name="FolderPermissions" EntityType="Self.FolderPermission" />
+    <EntitySet Name="Folders" EntityType="Self.Folder" />
+    <EntitySet Name="IndividualRoles" EntityType="Self.IndividualRole" />
+    <EntitySet Name="Individuals" EntityType="Self.Individual" />
+    <EntitySet Name="LogInfoes" EntityType="Self.LogInfo" />
+    <EntitySet Name="LogProperties" EntityType="Self.LogProperty" />
+    <EntitySet Name="LogPropertyChanges" EntityType="Self.LogPropertyChanx" />
+    <EntitySet Name="Logs" EntityType="Self.Log" />
+    <EntitySet Name="LogTypes" EntityType="Self.LogType" />
+    <EntitySet Name="Roles" EntityType="Self.Role" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagram" />
+    <EntitySet Name="User_Test" EntityType="Self.User_Test" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRole" />
+    <AssociationSet Name="FK_dbo_ClientAssociates_dbo_Clients_ClientId" Association="Self.FK_dbo_ClientAssociates_dbo_Clients_ClientId">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientAssociates" EntitySet="ClientAssociates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ClientAssociates_dbo_Individuals_IndividualId" Association="Self.FK_dbo_ClientAssociates_dbo_Individuals_IndividualId">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="ClientAssociates" EntitySet="ClientAssociates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Clients_dbo_Firms_FirmId" Association="Self.FK_dbo_Clients_dbo_Firms_FirmId">
+      <End Role="Firms" EntitySet="Firms" />
+      <End Role="Clients" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Documents_dbo_Folders_FolderId" Association="Self.FK_dbo_Documents_dbo_Folders_FolderId">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualRoles_Firms" Association="Self.FK_IndividualRoles_Firms">
+      <End Role="Firms" EntitySet="Firms" />
+      <End Role="IndividualRoles" EntitySet="IndividualRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_FolderPermissions_dbo_Folders_FolderId" Association="Self.FK_dbo_FolderPermissions_dbo_Folders_FolderId">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="FolderPermissions" EntitySet="FolderPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_FolderPermissions_dbo_Individuals_IndividualId" Association="Self.FK_dbo_FolderPermissions_dbo_Individuals_IndividualId">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="FolderPermissions" EntitySet="FolderPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualRoles_Individuals" Association="Self.FK_IndividualRoles_Individuals">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="IndividualRoles" EntitySet="IndividualRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LogPropertyChanges_dbo_Logs_LogId" Association="Self.FK_dbo_LogPropertyChanges_dbo_Logs_LogId">
+      <End Role="Logs" EntitySet="Logs" />
+      <End Role="LogPropertyChanges" EntitySet="LogPropertyChanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Test_UserRoles" Association="Self.FK_User_Test_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="User_Test" EntitySet="User_Test" />
+    </AssociationSet>
+    <FunctionImport Name="GetAssociatesFirmsClients" ReturnType="Collection(DMS2Model.GetAssociatesFirmsClients_Result)">
+      <Parameter Name="individualId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_CreateFolder" ReturnType="Collection(Int64)">
+      <Parameter Name="RoleId" Mode="In" Type="Int32" />
+      <Parameter Name="CreatedBy" Mode="In" Type="Int64" />
+      <Parameter Name="OwnerId" Mode="In" Type="Int64" />
+      <Parameter Name="ParentFolderId" Mode="In" Type="Int64" />
+      <Parameter Name="IndividualId" Mode="In" Type="Int64" />
+      <Parameter Name="FolderPath" Mode="In" Type="String" />
+      <Parameter Name="FolderName" Mode="In" Type="String" />
+      <Parameter Name="CanCreate" Mode="In" Type="Boolean" />
+      <Parameter Name="CanDownload" Mode="In" Type="Boolean" />
+      <Parameter Name="CanDelete" Mode="In" Type="Boolean" />
+      <Parameter Name="CanUpload" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="sp_deleteFirm">
+      <Parameter Name="firmId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_deleteFirms">
+      <Parameter Name="firmId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getAssociatedIndividuals" ReturnType="Collection(DMS2Model.sp_getAssociatedIndividuals_Result)">
+      <Parameter Name="ClientId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetClients_Search">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="searchItem" Mode="In" Type="String" />
+      <Parameter Name="isIndividual" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetClients_Search_Test">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="searchItem" Mode="In" Type="String" />
+      <Parameter Name="isIndividual" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetClients_Search_TestNew">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="searchItem" Mode="In" Type="String" />
+      <Parameter Name="isIndividual" Mode="In" Type="String" />
+      <Parameter Name="LoginUserId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getclientsbyIndividualId" ReturnType="Collection(DMS2Model.sp_getclientsbyIndividualId_Result)">
+      <Parameter Name="individualid" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetDataByFolderId" ReturnType="Collection(DMS2Model.SP_GetDataByFolderId_Result)">
+      <Parameter Name="FolderId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetFoldersByParentFolderId" ReturnType="Collection(DMS2Model.sp_GetFoldersByParentFolderId_Result)">
+      <Parameter Name="FolderId" Mode="In" Type="Int64" />
+      <Parameter Name="IndividualId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetFoldersWithPermissions" ReturnType="Collection(DMS2Model.sp_GetFoldersWithPermissions_Result)">
+      <Parameter Name="RoleId" Mode="In" Type="Int64" />
+      <Parameter Name="OwnerId" Mode="In" Type="Int64" />
+      <Parameter Name="firmid" Mode="In" Type="Int64" />
+      <Parameter Name="clientId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetIndividualByclientId" ReturnType="Collection(DMS2Model.SP_GetIndividualByclientId_Result)">
+      <Parameter Name="ClientId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetIndividualEmailDetails">
+      <Parameter Name="individualIds" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SP_GetIndividualForInvitations" ReturnType="Collection(DMS2Model.SP_GetIndividualForInvitations_Result)">
+      <Parameter Name="ClientId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetInviteList" ReturnType="Collection(DMS2Model.sp_GetInviteList_Result)">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="RoleID" Mode="In" Type="Int64" />
+      <Parameter Name="createdBy" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_GetInviteList_test" ReturnType="Collection(DMS2Model.sp_GetInviteList_test_Result)">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="RoleID" Mode="In" Type="Int64" />
+      <Parameter Name="createdBy" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getUserByEmail" ReturnType="Collection(DMS2Model.sp_getUserByEmail_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="sp_getUsersInRoleByFirmOrClient" ReturnType="Collection(DMS2Model.sp_getUsersInRoleByFirmOrClient_Result)">
+      <Parameter Name="FirmId" Mode="In" Type="Int64" />
+      <Parameter Name="ClientId" Mode="In" Type="Int64" />
+    </FunctionImport>
+    <FunctionImport Name="sp_userlogin" ReturnType="Collection(DMS2Model.sp_userlogin_Result)">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ssp_getassociatedfirmsorclients" ReturnType="Collection(DMS2Model.ssp_getassociatedfirmsorclients_Result)">
+      <Parameter Name="individualid" Mode="In" Type="Int64" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="GetAssociatesFirmsClients_Result">
+    <Property Type="Int64" Name="FirmId" Nullable="false" />
+    <Property Type="String" Name="FirmName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirmLogo" Nullable="true" />
+    <Property Type="String" Name="FirmAddress1" Nullable="true" />
+    <Property Type="String" Name="FirmAddress2" Nullable="true" />
+    <Property Type="String" Name="FirmCity" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirmState" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirmZip" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="FirmPhone" Nullable="true" MaxLength="20" />
+    <Property Type="String" Name="FirmEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirmWebsite" Nullable="true" />
+    <Property Type="Int64" Name="FirmRootFolderId" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ClientId" Nullable="false" />
+    <Property Type="Int64" Name="FirmId1" Nullable="false" />
+    <Property Type="Boolean" Name="IsBusiness" Nullable="true" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ClientPrefix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ClientFirstName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ClientMiddleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ClientLastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ClientEmail" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ClientSuffix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ClientAddress1" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ClientAddress2" Nullable="true" MaxLength="500" />
+    <Property Type="String" Name="ClientCity" Nullable="true" />
+    <Property Type="String" Name="ClientState" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ClientZip" Nullable="true" MaxLength="6" />
+    <Property Type="String" Name="ClientPhone" Nullable="true" MaxLength="20" />
+    <Property Type="Int64" Name="ClientRootFolderId" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy1" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate1" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy1" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate1" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsActive1" Nullable="false" />
+    <Property Type="Boolean" Name="IsDeleted1" Nullable="false" />
+    <Property Type="String" Name="ClientUserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="ClientPassword" Nullable="true" MaxLength="50" />
+    <Property Type="Int64" Name="ClientAssociateId" Nullable="false" />
+    <Property Type="Int64" Name="ClientId1" Nullable="false" />
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="Prefix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SSN" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="Birthdate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+    <Property Type="DateTime" Name="DateInvited" Nullable="false" Precision="23" />
+    <Property Type="DateTime" Name="DateAccepted" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ClientAssociateRootFolderId" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy2" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate2" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy2" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate2" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="IndividualRoleid" Nullable="false" />
+    <Property Type="Int64" Name="Individualid1" Nullable="true" />
+    <Property Type="Int64" Name="Firmid2" Nullable="true" />
+    <Property Type="Int64" Name="Clientid2" Nullable="true" />
+    <Property Type="Int32" Name="Roleid" Nullable="true" />
+    <Property Type="Boolean" Name="IsActive2" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy3" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate3" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy3" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate3" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="sp_getAssociatedIndividuals_Result">
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="101" />
+  </ComplexType>
+  <ComplexType Name="sp_getclientsbyIndividualId_Result">
+    <Property Type="Int64" Name="ID" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="SP_GetDataByFolderId_Result">
+    <Property Type="Int64" Name="FOLDERID" Nullable="false" />
+    <Property Type="String" Name="FOLDERNAME" Nullable="true" />
+    <Property Type="String" Name="FOLDERPATH" Nullable="true" />
+    <Property Type="Boolean" Name="CANCREATE" Nullable="true" />
+    <Property Type="Boolean" Name="CANDELETE" Nullable="true" />
+    <Property Type="Boolean" Name="CANUPLOAD" Nullable="true" />
+    <Property Type="Boolean" Name="CANDOWNLOAD" Nullable="true" />
+    <Property Type="Int64" Name="CREATEDBY" Nullable="true" />
+    <Property Type="DateTime" Name="CREATEDDATE" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="FOLDERPERMISSIONID" Nullable="false" />
+    <Property Type="Int64" Name="OWNERID" Nullable="true" />
+    <Property Type="Int32" Name="ROLEID" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="sp_GetFoldersByParentFolderId_Result">
+    <Property Type="Int64" Name="FolderPermissionId" Nullable="false" />
+    <Property Type="Int64" Name="FolderId" Nullable="true" />
+    <Property Type="Int64" Name="OwnerId" Nullable="true" />
+    <Property Type="Int64" Name="IndividualId" Nullable="true" />
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <Property Type="Boolean" Name="CanCreate" Nullable="true" />
+    <Property Type="Boolean" Name="CanDelete" Nullable="true" />
+    <Property Type="Boolean" Name="CanUpload" Nullable="true" />
+    <Property Type="Boolean" Name="CanDownload" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Int32" Name="Role_RoleId" Nullable="true" />
+    <Property Type="Int64" Name="User_UserId" Nullable="true" />
+  </ComplexType>
+  <ComplexType Name="sp_GetFoldersWithPermissions_Result">
+    <Property Type="Int64" Name="FolderId" Nullable="false" />
+    <Property Type="String" Name="FolderName" Nullable="true" />
+    <Property Type="String" Name="FolderPath" Nullable="true" />
+    <Property Type="Int64" Name="ParentFolderId" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+  </ComplexType>
+  <ComplexType Name="SP_GetIndividualByclientId_Result">
+    <Property Type="Int64" Name="ID" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SP_GetIndividualForInvitations_Result">
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="sp_GetInviteList_Result">
+    <Property Type="String" Name="FromClient" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ToClient" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_GetInviteList_test_Result">
+    <Property Type="String" Name="FromClient" Nullable="true" MaxLength="100" />
+    <Property Type="String" Name="ToClient" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="Status" Nullable="false" MaxLength="8" />
+  </ComplexType>
+  <ComplexType Name="sp_getUserByEmail_Result">
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="Prefix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SSN" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsBusiness" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="sp_getUsersInRoleByFirmOrClient_Result">
+    <Property Type="Int32" Name="RoleId" Nullable="false" />
+    <Property Type="String" Name="RoleName" Nullable="true" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="101" />
+    <Property Type="String" Name="ClientName" Nullable="true" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="sp_userlogin_Result">
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="Prefix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirstName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MiddleName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="UserName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Suffix" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="SSN" Nullable="true" MaxLength="250" />
+    <Property Type="DateTime" Name="BirthDate" Nullable="true" Precision="23" />
+    <Property Type="String" Name="Phone" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="EmailAddress" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="Password" Nullable="true" MaxLength="50" />
+    <Property Type="Boolean" Name="IsActive" Nullable="true" />
+    <Property Type="Boolean" Name="IsDeleted" Nullable="true" />
+    <Property Type="Int64" Name="CreatedBy" Nullable="true" />
+    <Property Type="DateTime" Name="CreatedDate" Nullable="true" Precision="23" />
+    <Property Type="Int64" Name="ModifiedBy" Nullable="true" />
+    <Property Type="DateTime" Name="ModifiedDate" Nullable="true" Precision="23" />
+    <Property Type="Boolean" Name="IsBusiness" Nullable="true" />
+    <Property Type="String" Name="Address" Nullable="true" MaxLength="500" />
+  </ComplexType>
+  <ComplexType Name="ssp_getassociatedfirmsorclients_Result">
+    <Property Type="Int64" Name="IndividualId" Nullable="false" />
+    <Property Type="String" Name="ssn" Nullable="true" MaxLength="250" />
+    <Property Type="Int32" Name="roleid" Nullable="true" />
+    <Property Type="String" Name="RoleName" Nullable="true" />
+    <Property Type="String" Name="FirmName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="FirmWebsite" Nullable="true" />
+  </ComplexType>
+</Schema>

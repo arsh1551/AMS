@@ -1,0 +1,66 @@
+﻿@model IEnumerable<DataAcessLayer.ViewModels.AssociateViewModel>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h2>Associate Listing</h2>*@
+
+<p>
+    
+    @Ajax.ActionLink("Add Associate", "Create", null,new AjaxOptions { HttpMethod = "GET", UpdateTargetId = "divEmp", OnSuccess = "AddEmployeeSuccess", OnBegin = "onAddEditEmployee" }, new { @class = "btn btn-primary btn-lg " })
+    <br/>
+    <br/>
+</p> 
+<div id="divEmp">
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AssociateName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssociatePhone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AssociateAddress)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SpecializationSummary)
+            </th>
+            <th>Actions</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssociateName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssociatePhone)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AssociateAddress)
+                </td>
+
+                <td class="summary">
+                    @Html.DisplayFor(modelItem => item.SpecializationSummary)
+
+                </td>
+
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.AssociateId }) |
+                    @*@Html.ActionLink("Delete", "Delete", new { id = item.AssociateId })*@
+                    <a href="javascript:(void0)" onclick="DeleteRecord(this)" data-info=@item.AssociateId id="deleteLink" name="deleteLink" data-toggle="modal" data-target="#deleteModal">Delete </a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Scripts/IndexAssociate.js"></script>
+
+}

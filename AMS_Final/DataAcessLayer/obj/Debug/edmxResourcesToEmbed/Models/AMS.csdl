@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="AMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Associate">
+    <Key>
+      <PropertyRef Name="AssociateId" />
+    </Key>
+    <Property Name="AssociateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AssociateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="AssociatePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+    <Property Name="AssociateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Specializations" Relationship="Self.AssociatSpecialization" FromRole="Associate" ToRole="Specialization" />
+  </EntityType>
+  <EntityType Name="Specialization">
+    <Key>
+      <PropertyRef Name="SpecializationId" />
+    </Key>
+    <Property Name="SpecializationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SpecializationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Associates" Relationship="Self.AssociatSpecialization" FromRole="Specialization" ToRole="Associate" />
+  </EntityType>
+  <Association Name="AssociatSpecialization">
+    <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+    <End Role="Specialization" Type="Self.Specialization" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="ContextAMS" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Associates" EntityType="Self.Associate" />
+    <EntitySet Name="Specializations" EntityType="Self.Specialization" />
+    <AssociationSet Name="AssociatSpecialization" Association="Self.AssociatSpecialization">
+      <End Role="Associate" EntitySet="Associates" />
+      <End Role="Specialization" EntitySet="Specializations" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

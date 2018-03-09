@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AMSModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateId" />
+          </Key>
+          <Property Name="AssociateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AssociateName" Type="varchar" MaxLength="50" />
+          <Property Name="AssociatePhone" Type="varchar" MaxLength="15" />
+          <Property Name="AssociateAddress" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AssociatSpecialization">
+          <Key>
+            <PropertyRef Name="AssociateId" />
+            <PropertyRef Name="SpecializationId" />
+          </Key>
+          <Property Name="AssociateId" Type="int" Nullable="false" />
+          <Property Name="SpecializationId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="SpecializationId" />
+          </Key>
+          <Property Name="SpecializationId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SpecializationName" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_AssociatSpecialization_Associate">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="1" />
+          <End Role="AssociatSpecialization" Type="Self.AssociatSpecialization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Associate">
+              <PropertyRef Name="AssociateId" />
+            </Principal>
+            <Dependent Role="AssociatSpecialization">
+              <PropertyRef Name="AssociateId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AssociatSpecialization_Specialization">
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="1" />
+          <End Role="AssociatSpecialization" Type="Self.AssociatSpecialization" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Specialization">
+              <PropertyRef Name="SpecializationId" />
+            </Principal>
+            <Dependent Role="AssociatSpecialization">
+              <PropertyRef Name="SpecializationId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="AMSModelStoreContainer">
+          <EntitySet Name="Associate" EntityType="Self.Associate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssociatSpecialization" EntityType="Self.AssociatSpecialization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Specialization" EntityType="Self.Specialization" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AssociatSpecialization_Associate" Association="Self.FK_AssociatSpecialization_Associate">
+            <End Role="Associate" EntitySet="Associate" />
+            <End Role="AssociatSpecialization" EntitySet="AssociatSpecialization" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AssociatSpecialization_Specialization" Association="Self.FK_AssociatSpecialization_Specialization">
+            <End Role="Specialization" EntitySet="Specialization" />
+            <End Role="AssociatSpecialization" EntitySet="AssociatSpecialization" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AMSModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Associate">
+          <Key>
+            <PropertyRef Name="AssociateId" />
+          </Key>
+          <Property Name="AssociateId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AssociateName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AssociatePhone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AssociateAddress" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Specializations" Relationship="Self.AssociatSpecialization" FromRole="Associate" ToRole="Specialization" />
+        </EntityType>
+        <EntityType Name="Specialization">
+          <Key>
+            <PropertyRef Name="SpecializationId" />
+          </Key>
+          <Property Name="SpecializationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SpecializationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Associates" Relationship="Self.AssociatSpecialization" FromRole="Specialization" ToRole="Associate" />
+        </EntityType>
+        <Association Name="AssociatSpecialization">
+          <End Role="Associate" Type="Self.Associate" Multiplicity="*" />
+          <End Role="Specialization" Type="Self.Specialization" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="ContextAMS" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Associates" EntityType="Self.Associate" />
+          <EntitySet Name="Specializations" EntityType="Self.Specialization" />
+          <AssociationSet Name="AssociatSpecialization" Association="Self.AssociatSpecialization">
+            <End Role="Associate" EntitySet="Associates" />
+            <End Role="Specialization" EntitySet="Specializations" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AMSModelStoreContainer" CdmEntityContainer="ContextAMS">
+          <EntitySetMapping Name="Associates">
+            <EntityTypeMapping TypeName="AMSModel.Associate">
+              <MappingFragment StoreEntitySet="Associate">
+                <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+                <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+                <ScalarProperty Name="AssociatePhone" ColumnName="AssociatePhone" />
+                <ScalarProperty Name="AssociateAddress" ColumnName="AssociateAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Specializations">
+            <EntityTypeMapping TypeName="AMSModel.Specialization">
+              <MappingFragment StoreEntitySet="Specialization">
+                <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+                <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AssociatSpecialization" TypeName="AMSModel.AssociatSpecialization" StoreEntitySet="AssociatSpecialization">
+            <EndProperty Name="Associate">
+              <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+            </EndProperty>
+            <EndProperty Name="Specialization">
+              <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

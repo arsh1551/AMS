@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="AMSModelStoreContainer" CdmEntityContainer="ContextAMS">
+    <EntitySetMapping Name="Associates">
+      <EntityTypeMapping TypeName="AMSModel.Associate">
+        <MappingFragment StoreEntitySet="Associate">
+          <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+          <ScalarProperty Name="AssociateName" ColumnName="AssociateName" />
+          <ScalarProperty Name="AssociatePhone" ColumnName="AssociatePhone" />
+          <ScalarProperty Name="AssociateAddress" ColumnName="AssociateAddress" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Specializations">
+      <EntityTypeMapping TypeName="AMSModel.Specialization">
+        <MappingFragment StoreEntitySet="Specialization">
+          <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+          <ScalarProperty Name="SpecializationName" ColumnName="SpecializationName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="AssociatSpecialization" TypeName="AMSModel.AssociatSpecialization" StoreEntitySet="AssociatSpecialization">
+      <EndProperty Name="Associate">
+        <ScalarProperty Name="AssociateId" ColumnName="AssociateId" />
+      </EndProperty>
+      <EndProperty Name="Specialization">
+        <ScalarProperty Name="SpecializationId" ColumnName="SpecializationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+  </EntityContainerMapping>
+</Mapping>

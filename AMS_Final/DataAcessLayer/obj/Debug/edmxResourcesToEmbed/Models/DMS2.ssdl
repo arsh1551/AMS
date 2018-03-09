@@ -1,0 +1,574 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="DMS2Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="ClientAssociates">
+    <Key>
+      <PropertyRef Name="ClientAssociateId" />
+    </Key>
+    <Property Name="ClientAssociateId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ClientId" Type="bigint" Nullable="false" />
+    <Property Name="IndividualId" Type="bigint" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="Suffix" Type="varchar" MaxLength="50" />
+    <Property Name="SSN" Type="varchar" MaxLength="250" />
+    <Property Name="Birthdate" Type="datetime" />
+    <Property Name="Phone" Type="nvarchar" MaxLength="50" />
+    <Property Name="Email" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateInvited" Type="datetime" Nullable="false" />
+    <Property Name="DateAccepted" Type="datetime" />
+    <Property Name="ClientAssociateRootFolderId" Type="bigint" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Clients">
+    <Key>
+      <PropertyRef Name="ClientId" />
+    </Key>
+    <Property Name="ClientId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirmId" Type="bigint" Nullable="false" />
+    <Property Name="IsBusiness" Type="bit" />
+    <Property Name="ClientName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientPrefix" Type="varchar" MaxLength="50" />
+    <Property Name="ClientFirstName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientMiddleName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientLastName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ClientEmail" Type="varchar" MaxLength="50" />
+    <Property Name="ClientSuffix" Type="varchar" MaxLength="50" />
+    <Property Name="ClientAddress1" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientAddress2" Type="nvarchar" MaxLength="500" />
+    <Property Name="ClientCity" Type="varchar(max)" />
+    <Property Name="ClientState" Type="varchar" MaxLength="50" />
+    <Property Name="ClientZip" Type="varchar" MaxLength="6" />
+    <Property Name="ClientPhone" Type="varchar" MaxLength="20" />
+    <Property Name="ClientRootFolderId" Type="bigint" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="ClientUserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="ClientPassword" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Documents">
+    <Key>
+      <PropertyRef Name="DocId" />
+    </Key>
+    <Property Name="DocId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FolderId" Type="bigint" />
+    <Property Name="DocName" Type="nvarchar(max)" />
+    <Property Name="DocSize" Type="int" />
+    <Property Name="DocType" Type="nvarchar(max)" />
+    <Property Name="DocPath" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Firms">
+    <Key>
+      <PropertyRef Name="FirmId" />
+    </Key>
+    <Property Name="FirmId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirmName" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirmLogo" Type="nvarchar(max)" />
+    <Property Name="FirmAddress1" Type="nvarchar(max)" />
+    <Property Name="FirmAddress2" Type="nvarchar(max)" />
+    <Property Name="FirmCity" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirmState" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirmZip" Type="varchar" MaxLength="6" />
+    <Property Name="FirmPhone" Type="nvarchar" MaxLength="20" />
+    <Property Name="FirmEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="FirmWebsite" Type="varchar(max)" />
+    <Property Name="FirmRootFolderId" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="FolderPermissions">
+    <Key>
+      <PropertyRef Name="FolderPermissionId" />
+    </Key>
+    <Property Name="FolderPermissionId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FolderId" Type="bigint" />
+    <Property Name="OwnerId" Type="bigint" />
+    <Property Name="IndividualId" Type="bigint" />
+    <Property Name="RoleId" Type="int" Nullable="false" />
+    <Property Name="CanCreate" Type="bit" />
+    <Property Name="CanDelete" Type="bit" />
+    <Property Name="CanUpload" Type="bit" />
+    <Property Name="CanDownload" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="Role_RoleId" Type="int" />
+    <Property Name="User_UserId" Type="bigint" />
+  </EntityType>
+  <EntityType Name="Folders">
+    <Key>
+      <PropertyRef Name="FolderId" />
+    </Key>
+    <Property Name="FolderId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FolderName" Type="nvarchar(max)" />
+    <Property Name="FolderPath" Type="nvarchar(max)" />
+    <Property Name="ParentFolderId" Type="bigint" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="IndividualRoles">
+    <Key>
+      <PropertyRef Name="IndividualRoleid" />
+    </Key>
+    <Property Name="IndividualRoleid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Individualid" Type="bigint" />
+    <Property Name="Firmid" Type="bigint" />
+    <Property Name="Clientid" Type="bigint" />
+    <Property Name="Roleid" Type="int" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Individuals">
+    <Key>
+      <PropertyRef Name="IndividualId" />
+    </Key>
+    <Property Name="IndividualId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Prefix" Type="varchar" MaxLength="50" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="MiddleName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Suffix" Type="varchar" MaxLength="50" />
+    <Property Name="SSN" Type="varchar" MaxLength="250" />
+    <Property Name="BirthDate" Type="datetime" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="EmailAddress" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="IsBusiness" Type="bit" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="LogInfoes">
+    <Key>
+      <PropertyRef Name="ModuleName" />
+    </Key>
+    <Property Name="ModuleName" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="FieldName" Type="varchar(max)" />
+    <Property Name="PreviousValue" Type="nvarchar(max)" />
+    <Property Name="NewValue" Type="nvarchar(max)" />
+    <Property Name="ModifiedBy" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogProperties">
+    <Key>
+      <PropertyRef Name="TypeKey" />
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="TypeKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Key" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="LogValues" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogPropertyChanges">
+    <Key>
+      <PropertyRef Name="LogPropertyChangeId" />
+    </Key>
+    <Property Name="LogPropertyChangeId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="LogId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="PropertyKey" Type="nvarchar(max)" />
+    <Property Name="PreviousValue" Type="nvarchar(max)" />
+    <Property Name="NewValue" Type="varchar(max)" />
+    <Property Name="EncryptionKey" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Logs">
+    <Key>
+      <PropertyRef Name="LogId" />
+    </Key>
+    <Property Name="LogId" Type="uniqueidentifier" Nullable="false" />
+    <Property Name="ObjectId" Type="int" />
+    <Property Name="ParentId" Type="int" />
+    <Property Name="TypeKey" Type="nvarchar(max)" />
+    <Property Name="OperationKey" Type="nvarchar(max)" />
+    <Property Name="UserId" Type="int" />
+    <Property Name="Message" Type="varchar(max)" />
+    <Property Name="Created" Type="datetime" />
+    <Property Name="Processed" Type="bit" Nullable="false" />
+    <Property Name="ProcessedDate" Type="datetime" />
+    <Property Name="SendEmail" Type="bit" Nullable="false" />
+    <Property Name="WriteAsFile" Type="bit" Nullable="false" />
+    <Property Name="Representative" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="LogTypes">
+    <Key>
+      <PropertyRef Name="Key" />
+    </Key>
+    <Property Name="Key" Type="varchar" MaxLength="128" Nullable="false" />
+    <Property Name="Name" Type="nvarchar(max)" />
+    <Property Name="IdName" Type="nvarchar(max)" />
+    <Property Name="ClientIdName" Type="nvarchar(max)" />
+    <Property Name="ParentIdName" Type="nvarchar(max)" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Roles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <EntityType Name="User_Test">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar(max)" />
+    <Property Name="Title" Type="varchar" MaxLength="50" />
+    <Property Name="Password" Type="varchar" MaxLength="50" />
+    <Property Name="Profession" Type="varchar(max)" />
+    <Property Name="UserCode" Type="char" MaxLength="5" Nullable="false" />
+    <Property Name="Email" Type="nvarchar(max)" Nullable="false" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="UserRoleId" Type="int" />
+  </EntityType>
+  <EntityType Name="UserRoles">
+    <Key>
+      <PropertyRef Name="RoleId" />
+    </Key>
+    <Property Name="RoleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RoleName" Type="nvarchar(max)" />
+    <Property Name="IsActive" Type="bit" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" Nullable="false" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <Association Name="FK_dbo_ClientAssociates_dbo_Clients_ClientId">
+    <End Role="Clients" Type="Self.Clients" Multiplicity="1" />
+    <End Role="ClientAssociates" Type="Self.ClientAssociates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Clients">
+        <PropertyRef Name="ClientId" />
+      </Principal>
+      <Dependent Role="ClientAssociates">
+        <PropertyRef Name="ClientId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_ClientAssociates_dbo_Individuals_IndividualId">
+    <End Role="Individuals" Type="Self.Individuals" Multiplicity="1" />
+    <End Role="ClientAssociates" Type="Self.ClientAssociates" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="ClientAssociates">
+        <PropertyRef Name="IndividualId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Clients_dbo_Firms_FirmId">
+    <End Role="Firms" Type="Self.Firms" Multiplicity="1" />
+    <End Role="Clients" Type="Self.Clients" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firms">
+        <PropertyRef Name="FirmId" />
+      </Principal>
+      <Dependent Role="Clients">
+        <PropertyRef Name="FirmId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_Documents_dbo_Folders_FolderId">
+    <End Role="Folders" Type="Self.Folders" Multiplicity="0..1" />
+    <End Role="Documents" Type="Self.Documents" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="FolderId" />
+      </Principal>
+      <Dependent Role="Documents">
+        <PropertyRef Name="FolderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_FolderPermissions_dbo_Folders_FolderId">
+    <End Role="Folders" Type="Self.Folders" Multiplicity="0..1" />
+    <End Role="FolderPermissions" Type="Self.FolderPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Folders">
+        <PropertyRef Name="FolderId" />
+      </Principal>
+      <Dependent Role="FolderPermissions">
+        <PropertyRef Name="FolderId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_FolderPermissions_dbo_Individuals_IndividualId">
+    <End Role="Individuals" Type="Self.Individuals" Multiplicity="0..1" />
+    <End Role="FolderPermissions" Type="Self.FolderPermissions" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="FolderPermissions">
+        <PropertyRef Name="IndividualId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_dbo_LogPropertyChanges_dbo_Logs_LogId">
+    <End Role="Logs" Type="Self.Logs" Multiplicity="1">
+      <OnDelete Action="Cascade" />
+    </End>
+    <End Role="LogPropertyChanges" Type="Self.LogPropertyChanges" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Logs">
+        <PropertyRef Name="LogId" />
+      </Principal>
+      <Dependent Role="LogPropertyChanges">
+        <PropertyRef Name="LogId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualRoles_Firms">
+    <End Role="Firms" Type="Self.Firms" Multiplicity="0..1" />
+    <End Role="IndividualRoles" Type="Self.IndividualRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Firms">
+        <PropertyRef Name="FirmId" />
+      </Principal>
+      <Dependent Role="IndividualRoles">
+        <PropertyRef Name="Firmid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_IndividualRoles_Individuals">
+    <End Role="Individuals" Type="Self.Individuals" Multiplicity="0..1" />
+    <End Role="IndividualRoles" Type="Self.IndividualRoles" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Individuals">
+        <PropertyRef Name="IndividualId" />
+      </Principal>
+      <Dependent Role="IndividualRoles">
+        <PropertyRef Name="Individualid" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_User_Test_UserRoles">
+    <End Role="UserRoles" Type="Self.UserRoles" Multiplicity="0..1" />
+    <End Role="User_Test" Type="Self.User_Test" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserRoles">
+        <PropertyRef Name="RoleId" />
+      </Principal>
+      <Dependent Role="User_Test">
+        <PropertyRef Name="UserRoleId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Function Name="fn_diagramobjects" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="int" />
+  <Function Name="GetAssociatesFirmsClients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="individualId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_CreateFolder" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="int" Mode="In" />
+    <Parameter Name="CreatedBy" Type="bigint" Mode="In" />
+    <Parameter Name="OwnerId" Type="bigint" Mode="In" />
+    <Parameter Name="ParentFolderId" Type="bigint" Mode="In" />
+    <Parameter Name="IndividualId" Type="bigint" Mode="In" />
+    <Parameter Name="FolderPath" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="FolderName" Type="nvarchar(max)" Mode="In" />
+    <Parameter Name="CanCreate" Type="bit" Mode="In" />
+    <Parameter Name="CanDownload" Type="bit" Mode="In" />
+    <Parameter Name="CanDelete" Type="bit" Mode="In" />
+    <Parameter Name="CanUpload" Type="bit" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteFirm" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firmId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_deleteFirms" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="firmId" Type="int" Mode="In" />
+  </Function>
+  <Function Name="sp_getAssociatedIndividuals" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_GetClients_Search" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="searchItem" Type="varchar" Mode="In" />
+    <Parameter Name="isIndividual" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetClients_Search_Test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="searchItem" Type="varchar" Mode="In" />
+    <Parameter Name="isIndividual" Type="varchar" Mode="In" />
+  </Function>
+  <Function Name="sp_GetClients_Search_TestNew" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="searchItem" Type="varchar" Mode="In" />
+    <Parameter Name="isIndividual" Type="varchar" Mode="In" />
+    <Parameter Name="LoginUserId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_getclientsbyIndividualId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="individualid" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_GetDataByFolderId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FolderId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_GetFoldersByParentFolderId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FolderId" Type="bigint" Mode="In" />
+    <Parameter Name="IndividualId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_GetFoldersWithPermissions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="RoleId" Type="bigint" Mode="In" />
+    <Parameter Name="OwnerId" Type="bigint" Mode="In" />
+    <Parameter Name="firmid" Type="bigint" Mode="In" />
+    <Parameter Name="clientId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_GetIndividualByclientId" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="SP_GetIndividualEmailDetails" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="individualIds" Type="nvarchar(max)" Mode="In" />
+  </Function>
+  <Function Name="SP_GetIndividualForInvitations" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="ClientId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_GetInviteList" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="RoleID" Type="bigint" Mode="In" />
+    <Parameter Name="createdBy" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_GetInviteList_test" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="RoleID" Type="bigint" Mode="In" />
+    <Parameter Name="createdBy" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_getUserByEmail" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="sp_getUsersInRoleByFirmOrClient" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="FirmId" Type="bigint" Mode="In" />
+    <Parameter Name="ClientId" Type="bigint" Mode="In" />
+  </Function>
+  <Function Name="sp_userlogin" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="email" Type="nvarchar" Mode="In" />
+    <Parameter Name="password" Type="nvarchar" Mode="In" />
+  </Function>
+  <Function Name="ssp_getassociatedfirmsorclients" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+    <Parameter Name="individualid" Type="bigint" Mode="In" />
+  </Function>
+  <EntityContainer Name="DMS2ModelStoreContainer">
+    <EntitySet Name="ClientAssociates" EntityType="Self.ClientAssociates" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Clients" EntityType="Self.Clients" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Documents" EntityType="Self.Documents" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Firms" EntityType="Self.Firms" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="FolderPermissions" EntityType="Self.FolderPermissions" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Folders" EntityType="Self.Folders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="IndividualRoles" EntityType="Self.IndividualRoles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Individuals" EntityType="Self.Individuals" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogInfoes" EntityType="Self.LogInfoes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogProperties" EntityType="Self.LogProperties" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogPropertyChanges" EntityType="Self.LogPropertyChanges" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Logs" EntityType="Self.Logs" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="LogTypes" EntityType="Self.LogTypes" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="User_Test" EntityType="Self.User_Test" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="UserRoles" EntityType="Self.UserRoles" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_dbo_ClientAssociates_dbo_Clients_ClientId" Association="Self.FK_dbo_ClientAssociates_dbo_Clients_ClientId">
+      <End Role="Clients" EntitySet="Clients" />
+      <End Role="ClientAssociates" EntitySet="ClientAssociates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_ClientAssociates_dbo_Individuals_IndividualId" Association="Self.FK_dbo_ClientAssociates_dbo_Individuals_IndividualId">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="ClientAssociates" EntitySet="ClientAssociates" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Clients_dbo_Firms_FirmId" Association="Self.FK_dbo_Clients_dbo_Firms_FirmId">
+      <End Role="Firms" EntitySet="Firms" />
+      <End Role="Clients" EntitySet="Clients" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_Documents_dbo_Folders_FolderId" Association="Self.FK_dbo_Documents_dbo_Folders_FolderId">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="Documents" EntitySet="Documents" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_FolderPermissions_dbo_Folders_FolderId" Association="Self.FK_dbo_FolderPermissions_dbo_Folders_FolderId">
+      <End Role="Folders" EntitySet="Folders" />
+      <End Role="FolderPermissions" EntitySet="FolderPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_FolderPermissions_dbo_Individuals_IndividualId" Association="Self.FK_dbo_FolderPermissions_dbo_Individuals_IndividualId">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="FolderPermissions" EntitySet="FolderPermissions" />
+    </AssociationSet>
+    <AssociationSet Name="FK_dbo_LogPropertyChanges_dbo_Logs_LogId" Association="Self.FK_dbo_LogPropertyChanges_dbo_Logs_LogId">
+      <End Role="Logs" EntitySet="Logs" />
+      <End Role="LogPropertyChanges" EntitySet="LogPropertyChanges" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualRoles_Firms" Association="Self.FK_IndividualRoles_Firms">
+      <End Role="Firms" EntitySet="Firms" />
+      <End Role="IndividualRoles" EntitySet="IndividualRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_IndividualRoles_Individuals" Association="Self.FK_IndividualRoles_Individuals">
+      <End Role="Individuals" EntitySet="Individuals" />
+      <End Role="IndividualRoles" EntitySet="IndividualRoles" />
+    </AssociationSet>
+    <AssociationSet Name="FK_User_Test_UserRoles" Association="Self.FK_User_Test_UserRoles">
+      <End Role="UserRoles" EntitySet="UserRoles" />
+      <End Role="User_Test" EntitySet="User_Test" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

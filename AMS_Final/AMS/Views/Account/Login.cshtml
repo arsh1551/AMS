@@ -1,0 +1,123 @@
+﻿@model DataAcessLayer.ViewModels.LoginViewModel
+
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+        <div class="row">
+            <div class="col-md-12 col-sm-12">
+                <span id="spanErrorMessage" class="field-validation-valid text-danger"
+                      data-valmsg-for="StudentName"
+                      data-valmsg-replace="true">
+                </span>
+            </div>
+
+        </div>
+<main class="col-sm-9 ml-sm-auto col-md-10 pt-3">
+    <div class="main_section" id="divLogin">
+        @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger" id="dvAlertDanger">
+                <label id="lblAlertDanger">@ViewBag.Error</label>
+            </div>
+        }
+        @using (Ajax.BeginForm("Login", "Account", new AjaxOptions { HttpMethod = "POST", UpdateTargetId = "divLogin", OnBegin = "onAddFirm", OnFailure = "failuer", OnSuccess = "loginSuccess" }, new { @enctype = "multipart/form-data" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="alert alert-danger" id="dvAlertDanger" style="display:none;">
+                    <i class="fa fa-exclamation-triangle" aria-hidden="true"></i>
+                    <label id="lblAlertDanger"></label>
+                </div>
+                <div class="form-group" style="display:none">
+                    <div class="col-md-10">
+                        @Html.HiddenFor(model => model.RoleId)
+                       
+                    </div>
+                </div>
+                <h2>Login</h2>
+                <br />
+            </div>
+
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <label for="User Code"> User Code</label>
+                        @Html.ValidationMessageFor(model => model.UserCode, "", new { @class = "text-danger" })
+
+                        @Html.TextBoxFor(model => model.UserCode, "",new { @class = "form-control", @placeholder = "Enter User Code"})
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <label for="Password"> Password</label>
+                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+
+                            @Html.PasswordFor(model => model.Password, new { @class = "form-control", @placeholder = "Enter Password" })
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <div class="form-group">
+                            <div class="col-md-offset-2 m_top30 action-buttons">
+                                <input type="submit" id="btnLogin" name="UpdateProfile" value="Login" class="btn btn-secondary" />
+                                @*<a href="@Url.Action("Dashboard", "CompanyUser", new { area = "CompanyArea" })" class="btn btn-secondary">Cancel</a>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                }
+            </div>
+</main>
+
+        @*<div class="row">
+
+        </div>*@
+        @*<div class="row">
+            <div class="col-md-12 col-sm-12">
+                @Html.LabelFor(model => model.UserCode, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.UserCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserCode", @maxlength = "5" } })
+                    @Html.ValidationMessageFor(model => model.UserCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12 col-sm-12">
+                @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserCode", @maxlength = "5" } })
+                    @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    <input type="button" id="buttonLoginUser" value="Login" onclick="validateUser()" class="btn btn-default" />
+                </div>
+
+            </div>
+            <div class="col-md-6 col-sm-12">
+
+            </div>
+
+        </div>*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/Login.js")"></script>
+}
+
+
+
+

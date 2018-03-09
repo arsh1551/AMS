@@ -1,0 +1,115 @@
+﻿@model DataAcessLayer.ViewModels.Users
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Edit</h2>
+
+
+
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>User_Test</h4>
+        <hr />
+        <span id="spanErrorMessage" class="field-validation-valid text-danger"
+              data-valmsg-for="StudentName"
+              data-valmsg-replace="true">
+        </span>
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.user.Id, new {@id="Id" })
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+
+
+                @Html.LabelFor(model => model.user.Name, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.Name, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user.Name, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+
+
+                @Html.LabelFor(model => model.user.Title, htmlAttributes: new { @class = "control-label" })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.Title, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user.Title, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="col-md-6 col-sm-12">
+                @Html.LabelFor(model => model.user.UserCode, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.UserCode, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter UserCode", @maxlength = "5" } })
+                    @Html.ValidationMessageFor(model => model.user.UserCode, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+                @Html.LabelFor(model => model.user.Password, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.Password, new { htmlAttributes = new { @class = "form-control", @placeholder = "Enter Password", @maxlength = "6" } })
+                    @Html.ValidationMessageFor(model => model.user.Password, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+
+                @Html.LabelFor(model => model.user.Email, htmlAttributes: new { @class = "control-label" })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12">
+
+                @Html.LabelFor(model => model.user.Profession, htmlAttributes: new { @class = "control-label " })
+                <div class="form-group">
+                    @Html.EditorFor(model => model.user.Profession, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.user.Profession, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.UserRoles, htmlAttributes: new { @class = "control-label" })
+                    @Html.DropDownListFor(m => m.UserRoles, new SelectList(Model.UserRoles, "RoleId", "RoleName"), "--Select Role--")
+                    @Html.ValidationMessageFor(model => model.UserRoles, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    @*<input type="button" value="Save" class="btn btn-default" id="buttonAddUser" />*@
+                    <input type="button" id="buttonAddUser" value="Update" onclick="addAndList()" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+<div id="divUserList">
+    @{
+        Html.RenderPartial("_userList", Model.userList);
+    }
+
+</div>
+
+
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script src="@Url.Content("~/Scripts/CreateList.js")"></script>
+}
