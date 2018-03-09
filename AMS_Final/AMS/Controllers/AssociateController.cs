@@ -109,6 +109,10 @@ namespace TestUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "AssociateId,AssociateName,AssociatePhone,AssociateAddress,specializationIds")] AssociateViewModel associateViewModel)
         {
+            if (associateViewModel.specializationIds == null)
+            {
+                ModelState.AddModelError("Specializations", "Please select specialization");
+            }
 
             if (ModelState.IsValid)
             {
@@ -117,6 +121,7 @@ namespace TestUI.Controllers
             }
             else
             {
+                associateViewModel.Specializations = _associateService.GetSpecializationsAll();
                 return View(associateViewModel);
             }
         }

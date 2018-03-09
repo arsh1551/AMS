@@ -19,10 +19,8 @@ namespace DataAcessLayer.ViewModels
         public string AssociateName { get; set; }
         [Required(ErrorMessage = "Please enter phone number.")]
         [DataType(DataType.PhoneNumber)]
-       // [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         [StringLength(13, MinimumLength = 10,ErrorMessage ="Invalid number of digits.")]
-        //[RegularExpression(@"^(?:\d{8}|00\d{10}|\+\d{2}\d{8})$", ErrorMessage = "Not a valid Phone number")]
-
         [Display(Name = "Phone")]
         public string AssociatePhone { get; set; }
         [Required(ErrorMessage = "Please enter address.")]
